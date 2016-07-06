@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the luggage_seminars feature.
+ */
+
+include_once 'luggage_seminars.features.inc';
