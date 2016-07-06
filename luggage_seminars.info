@@ -1,5 +1,5 @@
 name = luggage_seminars
-description = luggage_events add-on that allows filtering seminars by semester
+description = luggage_events add-on that allows filtering by semester
 core = 7.x
 package = Luggage
 version = 7.x-3.5
@@ -8,8 +8,8 @@ dependencies[] = views
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
-features[field_base][] = field_semester
-features[field_instance][] = node-event-field_semester
+features[field_base][] = field_seminar_semester
+features[field_instance][] = node-event-field_seminar_semester
 features[taxonomy][] = semester
 features[variable][] = xmlsitemap_settings_taxonomy_term_semester
 features[views_view][] = seminars

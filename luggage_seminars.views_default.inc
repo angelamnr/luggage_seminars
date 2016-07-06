@@ -73,10 +73,12 @@ function luggage_seminars_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'event' => 'event',
   );
-  /* Filter criterion: Content: Semester (field_semester) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_semester_tid']['id'] = 'field_semester_tid';
   $handler->display->display_options['filters']['field_semester_tid']['table'] = 'field_data_field_semester';
   $handler->display->display_options['filters']['field_semester_tid']['field'] = 'field_semester_tid';
+  $handler->display->display_options['filters']['field_semester_tid']['operator'] = 'or';
+  $handler->display->display_options['filters']['field_semester_tid']['value'] = array();
   $handler->display->display_options['filters']['field_semester_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_semester_tid']['expose']['operator_id'] = 'field_semester_tid_op';
   $handler->display->display_options['filters']['field_semester_tid']['expose']['label'] = 'Semester';
@@ -91,9 +93,6 @@ function luggage_seminars_views_default_views() {
     4 => 0,
     7 => 0,
   );
-  $handler->display->display_options['filters']['field_semester_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_semester_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_semester_tid']['vocabulary'] = 'semester';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

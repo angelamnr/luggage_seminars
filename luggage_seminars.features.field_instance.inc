@@ -10,8 +10,8 @@
 function luggage_seminars_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-event-field_semester'.
-  $field_instances['node-event-field_semester'] = array(
+  // Exported field_instance: 'node-event-field_seminar_semester'.
+  $field_instances['node-event-field_seminar_semester'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
@@ -50,7 +50,7 @@ function luggage_seminars_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_semester',
+    'field_name' => 'field_seminar_semester',
     'label' => 'Semester',
     'required' => 0,
     'settings' => array(
