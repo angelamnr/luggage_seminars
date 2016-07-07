@@ -10,13 +10,13 @@
 function luggage_seminars_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_seminar_semester'.
-  $field_bases['field_seminar_semester'] = array(
+  // Exported field_base: 'field_seminar_series'.
+  $field_bases['field_seminar_series'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_seminar_semester',
+    'field_name' => 'field_seminar_series',
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -27,7 +27,7 @@ function luggage_seminars_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'semester',
+          'vocabulary' => 'seminar_series',
           'parent' => 0,
         ),
       ),

@@ -10,48 +10,52 @@
 function luggage_seminars_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-event-field_seminar_semester'.
-  $field_instances['node-event-field_seminar_semester'] = array(
+  // Exported field_instance: 'node-event-field_seminar_series'.
+  $field_instances['node-event-field_seminar_series'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 10,
+        'weight' => 1,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 1,
       ),
       'search_index' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 1,
       ),
       'search_result' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 1,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_seminar_semester',
-    'label' => 'Semester',
+    'field_name' => 'field_seminar_series',
+    'label' => 'Seminar Series',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -67,7 +71,7 @@ function luggage_seminars_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Semester');
+  t('Seminar Series');
 
   return $field_instances;
 }

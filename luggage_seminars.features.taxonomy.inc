@@ -9,9 +9,9 @@
  */
 function luggage_seminars_taxonomy_default_vocabularies() {
   return array(
-    'semester' => array(
-      'name' => 'Semester',
-      'machine_name' => 'semester',
+    'seminar_series' => array(
+      'name' => 'Seminar Series',
+      'machine_name' => 'seminar_series',
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
