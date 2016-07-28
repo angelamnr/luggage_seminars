@@ -5,13 +5,3 @@
  */
 
 include_once 'luggage_seminars.features.inc';
-
-/*
- * Implements hook_views_pre_build()
- */
-function luggage_seminars_views_pre_build(&$view) {
-  if($view->name == 'seminars') {
-    drupal_add_css(drupal_get_path('module','luggage_seminars').'/css/luggage_seminars.css');
-  }
-}
-

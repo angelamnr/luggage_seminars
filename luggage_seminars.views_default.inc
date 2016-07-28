@@ -44,21 +44,6 @@ function luggage_seminars_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Has taxonomy term ID */
-  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
-  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['tid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['tid']['validate']['type'] = 'taxonomy_term';
-  $handler->display->display_options['arguments']['tid']['validate_options']['vocabularies'] = array(
-    'semester' => 'semester',
-  );
-  $handler->display->display_options['arguments']['tid']['validate_options']['type'] = 'name';
-  $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = TRUE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -73,17 +58,225 @@ function luggage_seminars_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'event' => 'event',
   );
-  /* Filter criterion: Content: Seminar Series (field_seminar_series) */
-  $handler->display->display_options['filters']['field_seminar_series_tid']['id'] = 'field_seminar_series_tid';
-  $handler->display->display_options['filters']['field_seminar_series_tid']['table'] = 'field_data_field_seminar_series';
-  $handler->display->display_options['filters']['field_seminar_series_tid']['field'] = 'field_seminar_series_tid';
-  $handler->display->display_options['filters']['field_seminar_series_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_seminar_series_tid']['expose']['operator_id'] = 'field_seminar_series_tid_op';
-  $handler->display->display_options['filters']['field_seminar_series_tid']['expose']['label'] = 'Seminar Series';
-  $handler->display->display_options['filters']['field_seminar_series_tid']['expose']['operator'] = 'field_seminar_series_tid_op';
-  $handler->display->display_options['filters']['field_seminar_series_tid']['expose']['identifier'] = 'field_seminar_series_tid';
-  $handler->display->display_options['filters']['field_seminar_series_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_seminar_series_tid']['expose']['remember_roles'] = array(
+  /* Filter criterion: Date: Date (node) */
+  $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['table'] = 'node';
+  $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['date_filter']['expose']['operator_id'] = 'date_filter_op';
+  $handler->display->display_options['filters']['date_filter']['expose']['label'] = 'Date (node)';
+  $handler->display->display_options['filters']['date_filter']['expose']['operator'] = 'date_filter_op';
+  $handler->display->display_options['filters']['date_filter']['expose']['identifier'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['date_filter']['group_info']['label'] = 'Semester';
+  $handler->display->display_options['filters']['date_filter']['group_info']['identifier'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Fall 2014',
+      'operator' => 'between',
+      'value' => array(
+        'value_group' => array(
+          'value_choose_input_type' => 'date',
+          'value' => NULL,
+          'default_date' => '',
+        ),
+        'min_group' => array(
+          'min_choose_input_type' => 'date',
+          'min' => '2014-08-25',
+          'default_date' => '',
+        ),
+        'max_group' => array(
+          'max_choose_input_type' => 'date',
+          'max' => '2014-12-20',
+          'default_to_date' => '',
+        ),
+      ),
+    ),
+    2 => array(
+      'title' => 'Spring 2015',
+      'operator' => 'between',
+      'value' => array(
+        'value_group' => array(
+          'value_choose_input_type' => 'date',
+          'value' => NULL,
+          'default_date' => '',
+        ),
+        'min_group' => array(
+          'min_choose_input_type' => 'date',
+          'min' => '2015-01-12',
+          'default_date' => '',
+        ),
+        'max_group' => array(
+          'max_choose_input_type' => 'date',
+          'max' => '2015-05-09',
+          'default_to_date' => '',
+        ),
+      ),
+    ),
+    3 => array(
+      'title' => 'Summer 2015',
+      'operator' => 'between',
+      'value' => array(
+        'value_group' => array(
+          'value_choose_input_type' => 'date',
+          'value' => NULL,
+          'default_date' => '',
+        ),
+        'min_group' => array(
+          'min_choose_input_type' => 'date',
+          'min' => '2015-05-18',
+          'default_date' => '',
+        ),
+        'max_group' => array(
+          'max_choose_input_type' => 'date',
+          'max' => '2015-08-07',
+          'default_to_date' => '',
+        ),
+      ),
+    ),
+    4 => array(
+      'title' => 'Fall 2015',
+      'operator' => 'between',
+      'value' => array(
+        'value_group' => array(
+          'value_choose_input_type' => 'date',
+          'value' => NULL,
+          'default_date' => '',
+        ),
+        'min_group' => array(
+          'min_choose_input_type' => 'date',
+          'min' => '2015-08-24',
+          'default_date' => '',
+        ),
+        'max_group' => array(
+          'max_choose_input_type' => 'date',
+          'max' => '2015-12-19',
+          'default_to_date' => '',
+        ),
+      ),
+    ),
+    5 => array(
+      'title' => 'Spring 2016',
+      'operator' => 'between',
+      'value' => array(
+        'value_group' => array(
+          'value_choose_input_type' => 'date',
+          'value' => NULL,
+          'default_date' => '',
+        ),
+        'min_group' => array(
+          'min_choose_input_type' => 'date',
+          'min' => '2016-01-11',
+          'default_date' => '',
+        ),
+        'max_group' => array(
+          'max_choose_input_type' => 'date',
+          'max' => '2016-05-07',
+          'default_to_date' => '',
+        ),
+      ),
+    ),
+    6 => array(
+      'title' => 'Summer 2016',
+      'operator' => 'between',
+      'value' => array(
+        'value_group' => array(
+          'value_choose_input_type' => 'date',
+          'value' => NULL,
+          'default_date' => '',
+        ),
+        'min_group' => array(
+          'min_choose_input_type' => 'date',
+          'min' => '2016-05-16',
+          'default_date' => '',
+        ),
+        'max_group' => array(
+          'max_choose_input_type' => 'date',
+          'max' => '2016-08-05',
+          'default_to_date' => '',
+        ),
+      ),
+    ),
+    7 => array(
+      'title' => 'Fall 2016',
+      'operator' => 'between',
+      'value' => array(
+        'value_group' => array(
+          'value_choose_input_type' => 'date',
+          'value' => NULL,
+          'default_date' => '',
+        ),
+        'min_group' => array(
+          'min_choose_input_type' => 'date',
+          'min' => '2016-08-22',
+          'default_date' => '',
+        ),
+        'max_group' => array(
+          'max_choose_input_type' => 'date',
+          'max' => '2016-12-16',
+          'default_to_date' => '',
+        ),
+      ),
+    ),
+    8 => array(
+      'title' => 'Spring 2017',
+      'operator' => 'between',
+      'value' => array(
+        'value_group' => array(
+          'value_choose_input_type' => 'date',
+          'value' => NULL,
+          'default_date' => '',
+        ),
+        'min_group' => array(
+          'min_choose_input_type' => 'date',
+          'min' => '2017-01-09',
+          'default_date' => '',
+        ),
+        'max_group' => array(
+          'max_choose_input_type' => 'date',
+          'max' => '2017-05-05',
+          'default_to_date' => '',
+        ),
+      ),
+    ),
+    9 => array(
+      'title' => 'Summer 2017',
+      'operator' => 'between',
+      'value' => array(
+        'value_group' => array(
+          'value_choose_input_type' => 'date',
+          'value' => NULL,
+          'default_date' => '',
+        ),
+        'min_group' => array(
+          'min_choose_input_type' => 'date',
+          'min' => '2017-05-15',
+          'default_date' => '',
+        ),
+        'max_group' => array(
+          'max_choose_input_type' => 'date',
+          'max' => '2017-08-04',
+          'default_to_date' => '',
+        ),
+      ),
+    ),
+  );
+  $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
+    'field_data_field_event_when.field_event_when_value' => 'field_data_field_event_when.field_event_when_value',
+    'field_data_field_event_when.field_event_when_value2' => 'field_data_field_event_when.field_event_when_value2',
+  );
+  $handler->display->display_options['filters']['date_filter']['date_method'] = 'AND';
+  /* Filter criterion: Content: Event Type (field_event_type) */
+  $handler->display->display_options['filters']['field_event_type_tid']['id'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid']['table'] = 'field_data_field_event_type';
+  $handler->display->display_options['filters']['field_event_type_tid']['field'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['operator_id'] = 'field_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['label'] = 'Event Type';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['operator'] = 'field_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['identifier'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_event_type_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -92,16 +285,13 @@ function luggage_seminars_views_default_views() {
     4 => 0,
     7 => 0,
   );
-  $handler->display->display_options['filters']['field_seminar_series_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_seminar_series_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_seminar_series_tid']['vocabulary'] = 'seminar_series';
+  $handler->display->display_options['filters']['field_event_type_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_event_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_event_type_tid']['vocabulary'] = 'event_type';
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  /* Display: Seminars */
+  $handler = $view->new_display('page', 'Seminars', 'seminars');
   $handler->display->display_options['path'] = 'seminars';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Seminars';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
   $export['seminars'] = $view;
 
   return $export;
