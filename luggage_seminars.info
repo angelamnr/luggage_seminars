@@ -1,11 +1,11 @@
 name = luggage_seminars
 description = luggage_events add-on that allows filtering seminars by semester
 core = 7.x
-package = Features
+package = Luggage
 version = 7.x-3.5
+dependencies[] = ctools
 dependencies[] = date
 dependencies[] = views
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[views_view][] = seminars
-features_exclude[dependencies][ctools] = ctools
