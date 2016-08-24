@@ -43,7 +43,6 @@ function luggage_seminars_views_default_views() {
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -58,10 +57,22 @@ function luggage_seminars_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'event' => 'event',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Event Type (field_event_type) */
+  $handler->display->display_options['filters']['field_event_type_tid']['id'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid']['table'] = 'field_data_field_event_type';
+  $handler->display->display_options['filters']['field_event_type_tid']['field'] = 'field_event_type_tid';
+  $handler->display->display_options['filters']['field_event_type_tid']['value'] = array(
+    332 => '332',
+  );
+  $handler->display->display_options['filters']['field_event_type_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_event_type_tid']['vocabulary'] = 'event_type';
   /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['group'] = 1;
   $handler->display->display_options['filters']['date_filter']['exposed'] = TRUE;
   $handler->display->display_options['filters']['date_filter']['expose']['operator_id'] = 'date_filter_op';
   $handler->display->display_options['filters']['date_filter']['expose']['label'] = 'Date (node)';
@@ -266,28 +277,6 @@ function luggage_seminars_views_default_views() {
     'field_data_field_event_when.field_event_when_value2' => 'field_data_field_event_when.field_event_when_value2',
   );
   $handler->display->display_options['filters']['date_filter']['date_method'] = 'AND';
-  /* Filter criterion: Content: Event Type (field_event_type) */
-  $handler->display->display_options['filters']['field_event_type_tid']['id'] = 'field_event_type_tid';
-  $handler->display->display_options['filters']['field_event_type_tid']['table'] = 'field_data_field_event_type';
-  $handler->display->display_options['filters']['field_event_type_tid']['field'] = 'field_event_type_tid';
-  $handler->display->display_options['filters']['field_event_type_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['operator_id'] = 'field_event_type_tid_op';
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['label'] = 'Event Type';
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['operator'] = 'field_event_type_tid_op';
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['identifier'] = 'field_event_type_tid';
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_event_type_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    6 => 0,
-    5 => 0,
-    4 => 0,
-    7 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_type_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_event_type_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_event_type_tid']['vocabulary'] = 'event_type';
 
   /* Display: Seminars */
   $handler = $view->new_display('page', 'Seminars', 'seminars');
